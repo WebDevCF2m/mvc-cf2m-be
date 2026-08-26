@@ -8,24 +8,32 @@
 # B - Si une session est en cours et est valide, on la continue
 session_start();
 
-# 3) que charge-t-on à cette ligne ?
+# 3) On charge 1x de manière obligatoire le fichier contenant 
+# les constantes de connexion à PDO
+# ! non existant dans l'arboresence (.gitignore)
 require_once "../config.php";
-# 4) que charge-t-on à ces lignes ?
+
+# 4) Chargement des modèles représentant les tables (sans celles de jointure)
+# de la base de donnée. En procédural elles contiennent en réalité des fonctions
 require_once "../model/PostModel.php";# table post
 require_once "../model/CategoryModel.php";# table category
 require_once "../model/UserModel.php";# table user
 
 
-# 5 ) Nous essayons delancer quelle type d'objet, et pourquoi?
+# 5 ) Nous essayons de lancer l'instanciation de la classe PDO avec les
+# constantes contenues dans config.php, pour créer une connexion SQL
 try {
     $connectPDO = new PDO(
         DB_TYPE.':host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME.';charset='.DB_CHARSET,
         DB_LOGIN,
         DB_PWD
     );
-        # 6 ) activation de quoi
+        # 6 ) activation du mode erreur pour les requêtes, 
+        # sinon risque de pages blanches, chargé par défaut depuis PHP 8.0
         $connectPDO->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        # 7 ) En quoi voulons-nous que les résultats soient retournés par défaut ? 
+        # 7 ) Par défaut Lors d'une récupération de resultat et du traitement 
+        # d'un résultat par un fetch ou fetchAll,
+        # nous renvoie un tableau associatif 
         $connectPDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
 
     
