@@ -37,9 +37,11 @@ try {
         $connectPDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
 
     
-# 8 ) le catch est appelé dans quel cas
+# 8 ) le catch est appelé dans quel cas | Erreur dans le try
 }catch(Exception $e){
-    # 9 ) et que fait-il?
+    # 9 ) et que fait-il? | Il arrête le code à cette ligne et nous affiche 
+    # l'instanciation de Exception (=== $e = new Exception()) et la méthode 
+    # publique getMessage() qui est récupéré via le try
     die($e->getMessage());
 
 }
@@ -57,5 +59,5 @@ if(isset($_SESSION['myID'])&&$_SESSION['myID']==session_id()){
 }
 
 
-# 10 )
+# 10 ) | Bonne pratique, fermeture de la connexion
 $connectPDO = null;
