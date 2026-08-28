@@ -123,10 +123,10 @@ if (isset($_GET['postId'])&&ctype_digit($_GET['postId'])) {
         }
     }
 
-    # 30 ) que fait-on ici ?
+    # 30 ) que fait-on ici ? | Inclusion de la vue
     include "../view/publicView/connectView.php";
 
-# 31 ) sinon, où sommes nous ?
+# 31 ) sinon, où sommes nous ? | Nous sommes sur la page d'accueil
 }else{
     # homepage's datas from MODEL
     $recupAllPost = postHomepageAll($connectPDO);
