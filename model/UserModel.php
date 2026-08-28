@@ -54,9 +54,12 @@ function connectUserByUsername(PDO $db, string $uname, string $pwd) :bool|string
             return true;
 
         }else{
+            
             return "Login et/ou mot de passe incorrecte 2";
         }
     }else{
+        // perte de temps voulue pour que le hacker ne sache pas si un utilsateur existe dans la DB ou pas
+            password_verify($pwd,'$2y$10$KYbexAa0gbqSZax/RsK7V.rQ23CPy5im1rwo3v5VfW23DGrO/GlUm');
         return "Login et/ou mot de passe incorrecte 1";
     }
 
