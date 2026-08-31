@@ -75,7 +75,7 @@ else:
             <td><?=$item['contentshort']?></td>
             <td><?=$item['datecreate']?></td>
             <td><?=$link?></td>
-            <td><?=$item['userscreen']?></td>
+            <td><?=$item['userscreen']??"Anonyme"?></td>
             <td><?=$item['titlecategory']?></td>
             <td><a href="?updatePost=<?=$item['id']?>">update</a></td>
             <td><a onclick="void(0);let a=confirm('Voulez-vous vraiment supprimer \'<?=$item['title']?>\' ?'); if(a){ document.location = '?deletePost=<?=$item['id']?>'; };" href="#">delete</a></td>

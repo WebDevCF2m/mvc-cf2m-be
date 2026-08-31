@@ -22,7 +22,7 @@ if (isset($_GET['postId'])&&ctype_digit($_GET['postId'])) {
 
     # 14 ) que récupère-t-on et de quel fichier provient cette fonction ?
     # | on récupère 1 ou 0 article depuis model/PostModel.php
-    $recupPost = postOneById($connectPDO,$idpost);
+    $recupPost = postOneById($connectPDO,$idpost, true);
 
     # 15 ) que reçoit'on en cas d'erreur, et que fait-on ensuite ? | On  reçoit
     # un booléen (false), on crée la variable d'erreur puis on charge la vue 404
